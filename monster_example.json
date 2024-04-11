@@ -1,0 +1,52 @@
+[
+  {
+    "count": 1,
+    "color": "black",
+    "title": "SKELETON",
+    "icon": "imp-laugh",
+    "contents": [
+      "subtitle | A bleach-boned skeleton with red pinpoints of light in its eyes.",
+      "rule",
+      "property | Armor class | 13",
+      "property | Hit points | 11",
+      "property | Attack | 1 shortsword +1 (1d6) or 1 shortbow (far) +0 (1d4)",
+      "property | Move | near",
+      "property | Level | 2",
+      "rule",
+      "dndstats | 12  |  10  |  15  |  6  |  10  |  9",
+      "rule",
+      "fill",
+      "property | Undead| Immune to morale checks.",
+      "fill"
+    ],
+    "tags": [
+      "creature"
+    ]
+  },
+  {
+    "count": 1,
+    "color": "black",
+    "title": "CULTIST",
+    "icon": "imp-laugh",
+    "contents": [
+      "subtitle | A cloaked, wild-eyed zealot chanting the guttural prayers of a dark god.",
+      "rule",
+      "property | Armor class | 14",
+      "property | Hit points | 9",
+      "property | Attack | longsword +1 (1d8) or 1 spell +2",
+      "property | Move | near",
+      "property | Level | 2",
+      "rule",
+      "dndstats | 13  |  9  |  10  |  9  |  14  |  11",
+      "rule",
+      "fill",
+      "property | Fearless| Immune to morale checks.",
+      "fill",
+      "property | Deathtouch (WIS Spell)| DC 12. 2d4 damage to one creature within close.",
+      "fill"
+    ],
+    "tags": [
+      "creature"
+    ]
+  }
+]
