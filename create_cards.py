@@ -93,27 +93,57 @@ def start_conversion():
     csv_to_json(csv_path, json_path)
     status_label.config(text="Conversion completed successfully!")
 
+# Function to handle button click event for selecting CSV file
+def browse_csv():
+    # Store the current content of the entry field
+    old_content = csv_entry.get()
+    # Clear the entry field
+    csv_entry.delete(0, tk.END)
+    # Open the file dialog to select a CSV file
+    file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
+    # If the user selected a file, update the entry field with the file path
+    if file_path:
+        csv_entry.insert(tk.END, file_path)
+    else:
+        # If the user canceled, restore the previous content
+        csv_entry.insert(tk.END, old_content)
+
+# Function to handle button click event for selecting JSON file
+def browse_json():
+    # Store the current content of the entry field
+    old_content = json_entry.get()
+    # Clear the entry field
+    json_entry.delete(0, tk.END)
+    # Open the file dialog to select a JSON file
+    file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON Files", "*.json")])
+    # If the user selected a file, update the entry field with the file path
+    if file_path:
+        json_entry.insert(tk.END, file_path)
+    else:
+        # If the user canceled, restore the previous content
+        json_entry.insert(tk.END, old_content)
+
 # Create the main window
 root = tk.Tk()
-root.title("Monster Card Generator v0.1.0")
+root.title("Monster Card Generator v0.2.0")
 
 # Create and place widgets
 csv_label = tk.Label(root, text="CSV File import:")
 csv_label.grid(row=0, column=0)
 
-csv_entry = tk.Entry(root, width=50)
+csv_entry = tk.Entry(root, width=100)
 csv_entry.grid(row=0, column=1)
 
-csv_button = tk.Button(root, text="Browse", command=lambda: csv_entry.insert(tk.END, filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])))
+csv_button = tk.Button(root, text="Browse", command=browse_csv)
 csv_button.grid(row=0, column=2)
 
 json_label = tk.Label(root, text="JSON File export:")
 json_label.grid(row=1, column=0)
 
-json_entry = tk.Entry(root, width=50)
+json_entry = tk.Entry(root, width=100)
 json_entry.grid(row=1, column=1)
 
-json_button = tk.Button(root, text="Browse", command=lambda: json_entry.insert(tk.END, filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON Files", "*.json")])))
+json_button = tk.Button(root, text="Browse", command=browse_json)
 json_button.grid(row=1, column=2)
 
 convert_button = tk.Button(root, text="Convert", command=start_conversion)
