@@ -4,6 +4,19 @@ import csv
 import json
 import os
 
+# Dictionary mapping modifiers to stats
+modifier_to_stat = {
+    "-4": 3,
+    "-3": 4,
+    "-2": 6,
+    "-1": 8,
+    "+0": 10,
+    "+1": 12,
+    "+2": 14,
+    "+3": 16,
+    "+4": 18
+}
+
 # Function to convert CSV data to JSON format
 def csv_to_json(csv_file, json_file):
     json_data = []
@@ -31,11 +44,19 @@ def csv_to_json(csv_file, json_file):
                 ]
             }
             
-            # Check if Stats are provided and add them
-            if 'Stats' in row:
-                stats = row['Stats'].split(':')
-                if len(stats) == 6:
-                    monster["contents"].append("dndstats | " + " | ".join(stats))
+            # Check if Modifiers are provided and add them as dndstats
+            if 'Modifiers' in row:
+                modifiers = row['Modifiers'].split(', ')
+                dnd_stats = []
+                for modifier in modifiers:
+                    modifier_parts = modifier.split()
+                    if len(modifier_parts) == 2:  # Check if the format is correct
+                        modifier_value = modifier_parts[1]
+                        if modifier_value in modifier_to_stat:  # Check if modifier exists in dictionary
+                            stat = modifier_to_stat[modifier_value]
+                            dnd_stats.append(f"{stat}")
+                if dnd_stats:           
+                    monster["contents"].append("dndstats | " + " | ".join(dnd_stats))
                     monster["contents"].append("rule")
             
             # Add talents
@@ -54,6 +75,7 @@ def csv_to_json(csv_file, json_file):
 
     with open(json_file, 'w') as file:
         json.dump(json_data, file, indent=2)
+
 
 # Function to handle button click event
 def start_conversion():
