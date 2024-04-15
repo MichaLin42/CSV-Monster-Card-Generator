@@ -64,7 +64,7 @@ def csv_to_json(csv_file, json_file):
             prev_has_fill = False
             for talent in talents:
                 if talent.strip():  # Check if talent is not empty
-                    talent = talent.replace(":", "|")  # Replace ":" with "|"
+                    talent = talent.replace(".", "|", 1)  # Replace the first "." with "|"
                     if not prev_has_fill:
                          monster["contents"].append("fill")                
                     monster["contents"].append(f"property | {talent}")
@@ -125,7 +125,7 @@ def browse_json():
 
 # Create the main window
 root = tk.Tk()
-root.title("Monster Card Generator v0.2.0")
+root.title("Monster Card Generator v0.3.0")
 
 # Create and place widgets
 csv_label = tk.Label(root, text="CSV File import:")
