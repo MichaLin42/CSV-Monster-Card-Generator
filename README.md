@@ -5,4 +5,4 @@ The script will read a CSV file which contains the monster stats and convert it 
 
 
 ## Requirements
-tbd.
+ - Python 3.6 or higher
