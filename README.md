@@ -13,8 +13,10 @@ Example card output from [rpg-cards.vercel.app](https://rpg-cards.vercel.app):
  - Python 3.6 or higher
 
 ## Usage
+![enter image description here](https://raw.githubusercontent.com/MichaLin42/CSV-Monster-Card-Generator/main/doc/monster_card_generator.png)
  - Use the provided **monster_example.csv** file to fill in your monster data. You can also create your own CSV file as long as it has the same format (column names) as the provided example file.
  - Start the **create_cards.py** script and select your input CSV file (e.g. **monster_example.csv**) and output JSON file. The name of the JSON file does not matter.
+ - Click Convert to create the JSON file
  - Open https://rpg-cards.vercel.app and select *"Load from file"* from the **File** menu to import your JSON file
  - From there you can print or edit the imported cards.
  
